@@ -1,0 +1,57 @@
+// One way to solve this.
+
+class Solution {
+    public String reverseWords(String s) 
+    {
+        String arr[] = s.split(" ");
+        StringBuffer string = new StringBuffer();
+        
+        for(int i=arr.length-1;i>=0;i--)
+        {
+            if(!arr[i].isEmpty())
+            {
+                string = string.append(arr[i]);
+                if(i!=0)
+                    string = string.append(" ");
+            }
+        }
+        return string.toString().trim();
+    }
+}
+
+
+// Another way to solve this question 
+
+class Solution {
+    public String reverseWords(String s) 
+    {
+        String arr[] = s.split(" ");
+        System.out.println(Arrays.toString(arr));
+        String result = "";
+        for(int i=arr.length-1;i>=0;i--)
+        {
+            if(arr[i].length()==0)
+                continue;
+            result += arr[i].trim() + " ";
+        }
+        return result.trim();
+    }
+}
+
+
+//Optimised solution for the above second solution
+
+class Solution {
+    public String reverseWords(String s) 
+    {
+        String arr[] = s.split(" ");
+        String result = "";
+        for(int i=arr.length-1;i>=0;i--)
+        {
+            if(arr[i].length()==0)
+                continue;
+            result += arr[i].trim() + " ";
+        }
+        return result.trim();
+    }
+}
