@@ -1,0 +1,35 @@
+class Solution {
+    public int[] findOrder(int numCourses, int[][] prerequisites) 
+    {
+            int[] order = new int[numCourses];
+            int[] indegree = new int[numCourses];
+            int index = 0;
+            for (int i = 0; i < prerequisites.length; i++)
+                indegree[prerequisites[i][0]]++;
+
+            // Initialize queue and add all courses having indegree 0
+            Queue<Integer> queue = new LinkedList();
+            for (int i = 0; i < numCourses; i++) {
+                if (indegree[i] == 0) {
+                    queue.add(i);
+                    order[index++] = i;
+                }
+            }
+
+            while (!queue.isEmpty()) {
+                int prerequisite = queue.poll();
+                for (int i = 0; i < prerequisites.length; i++) {
+                    if (prerequisites[i][1] == prerequisite) {
+                        indegree[prerequisites[i][0]]--;
+                        if (indegree[prerequisites[i][0]] == 0) {
+                            // If indegree is zero, then add the course to the order.
+                            order[index++] = prerequisites[i][0];
+                            queue.offer(prerequisites[i][0]);
+                        }
+                    }
+                }
+            }
+
+            return index == numCourses ? order : new int[0];
+    }
+}
