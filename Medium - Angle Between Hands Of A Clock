@@ -1,0 +1,34 @@
+// Most efficient Solution
+
+class Solution {
+    public double angleClock(int hour, int minutes) 
+    {
+        double hourangle = (60*hour + minutes)*0.5;
+        double minuteangle = minutes*6;
+        
+        double angle = Math.abs(hourangle - minuteangle);
+        
+        if(angle<=180)
+            return angle;
+        return 360-angle;
+        
+    }
+}
+
+// Another way less efficient for the above
+
+class Solution {
+    public double angleClock(int hour, int minutes) 
+    {
+        double hourangle = (60*hour + minutes)*0.5;
+        double minuteangle = minutes*6;
+        
+        double angle = Math.abs(hourangle - minuteangle);
+        
+        if(angle<=180)
+            return angle;
+        else
+            return 360-angle;
+        
+    }
+}
