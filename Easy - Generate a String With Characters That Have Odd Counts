@@ -1,0 +1,29 @@
+class Solution {
+    public String generateTheString(int n) 
+    {
+        String result="";
+        if(n==0)
+            return "";
+        if(n%2!=0)
+        {
+            for(int i=0;i<n;i++)
+            {
+                result += "a";
+            }
+        }
+        else
+        {
+            int half = n/2;
+            if(half%2!=0)
+                result += "ab".repeat(half);
+            else
+            {
+                int low = half-1;
+                int high = half+1;
+                result += "a".repeat(low);
+                result += "b".repeat(high);
+            } 
+        }
+        return result;
+    }
+}
