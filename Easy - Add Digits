@@ -1,0 +1,25 @@
+class Solution
+{
+  public static int addDigits(int num)
+	{
+//		Solving this problem recursively and within O(c) time and O(c) space.
+		int sum =0;
+		int n = num;
+		if(num<=9)
+			return num;
+		while(n!=0)
+		{
+			sum += n%10;
+			n /=10;
+		}
+		return addDigits(sum);
+	}
+	
+	public static int addDigitsSecondWay(int num)
+	{
+//		This is the way to solve this problem in O(1) time and O(1) space. The best solution
+		if(num<=9)
+			return num;
+		return num%9==0?9:num%9;
+	}
+}
