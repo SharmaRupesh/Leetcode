@@ -1,0 +1,26 @@
+class Solution {
+    public String mostCommonWord(String paragraph, String[] banned) 
+    {
+        String[] arr = paragraph.toLowerCase().split("[!?.,';: ]+");
+        
+        Map<String,Integer> map = new HashMap();
+        for(String s: arr)
+            map.put(s,map.getOrDefault(s,0)+1);
+        System.out.println(map);
+        
+        PriorityQueue<String> list = new PriorityQueue<>((a,b) -> map.get(b)-map.get(a));
+        list.addAll(map.keySet());
+        
+        HashSet<String> ban = new HashSet();
+        for(String s: banned)
+            ban.add(s);
+        
+        while(!list.isEmpty())
+        {
+            String result = list.poll();
+            if(!ban.contains(result))
+                return result;
+        }
+        return " ";
+    }
+}
